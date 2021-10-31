@@ -1,0 +1,1 @@
+../../../../../node_modules/expo-structured-headers/ios/EXStructuredHeaders/EXStructuredHeadersParser.h

@@ -1,0 +1,29 @@
+{
+  "name": "EXStructuredHeaders",
+  "version": "1.1.1",
+  "summary": "Expo module implementation of a parser based on https://httpwg.org/specs/rfc8941.html",
+  "description": "Expo module implementation of a parser based on https://httpwg.org/specs/rfc8941.html",
+  "license": "MIT",
+  "authors": "650 Industries, Inc.",
+  "homepage": "https://github.com/expo/expo/tree/master/packages/expo-structured-headers",
+  "platforms": {
+    "ios": "11.0"
+  },
+  "source": {
+    "git": "https://github.com/expo/expo.git"
+  },
+  "dependencies": {
+    "UMCore": [
+
+    ]
+  },
+  "source_files": "EXStructuredHeaders/**/*.h",
+  "vendored_frameworks": "EXStructuredHeaders.xcframework",
+  "testspecs": [
+    {
+      "name": "Tests",
+      "test_type": "unit",
+      "source_files": "Tests/*.{h,m,swift}"
+    }
+  ]
+}

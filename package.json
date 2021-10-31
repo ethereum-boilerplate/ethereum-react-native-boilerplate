@@ -1,0 +1,137 @@
+{
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-native-fontawesome": "^0.2.7",
+    "@react-native-async-storage/async-storage": "1.13.4",
+    "@react-navigation/material-bottom-tabs": "^6.0.9",
+    "@react-navigation/native": "^6.0.6",
+    "@react-navigation/stack": "^6.0.11",
+    "@walletconnect/react-native-dapp": "1.6.6",
+    "@walletconnect/web3-provider": "^1.6.6",
+    "base-64": "1.0.0",
+    "buffer": "6.0.3",
+    "expo": "~42.0.0",
+    "expo-splash-screen": "~0.11.2",
+    "expo-status-bar": "~1.0.4",
+    "expo-updates": "~0.8.1",
+    "moralis": "0.0.99",
+    "node-libs-browser": "2.2.1",
+    "path-browserify": "0.0.0",
+    "react": "^17.0.2",
+    "react-blockies": "^1.4.1",
+    "react-dom": "^17.0.2",
+    "react-moralis": "0.2.7",
+    "react-native": "~0.63.4",
+    "react-native-crypto": "2.2.0",
+    "react-native-dotenv": "2.4.3",
+    "react-native-gesture-handler": "~1.10.2",
+    "react-native-get-random-values": "1.5.0",
+    "react-native-localhost": "1.0.0",
+    "react-native-paper": "^4.9.2",
+    "react-native-reanimated": "~2.2.0",
+    "react-native-safe-area-context": "3.2.0",
+    "react-native-screens": "~3.4.0",
+    "react-native-stream": "0.1.9",
+    "react-native-svg": "9.6.4",
+    "react-native-unimodules": "0.14.10",
+    "react-native-vector-icons": "^9.0.0",
+    "react-native-web": "~0.13.12",
+    "web3": "^1.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "~7.9.0",
+    "@nomiclabs/hardhat-ethers": "^2.0.1",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@types/jest": "^26.0.20",
+    "@types/node": "14.14.22",
+    "@types/react": "~16.9.35",
+    "@types/react-native": "~0.63.2",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^4.0.1",
+    "app-root-path": "3.0.0",
+    "chai": "^4.2.0",
+    "chokidar": "3.5.1",
+    "commitizen": "4.2.3",
+    "cz-conventional-changelog": "^3.2.0",
+    "dotenv": "8.2.0",
+    "enzyme": "3.11.0",
+    "enzyme-adapter-react-16": "1.15.6",
+    "eslint": "^7.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-functional": "^3.0.2",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-react": "7.22.0",
+    "eslint-plugin-react-native": "3.10.0",
+    "ethereum-waffle": "^3.2.1",
+    "gh-pages": "^3.2.3",
+    "hardhat": "2.0.6",
+    "husky": "4.3.8",
+    "jest": "26.6.3",
+    "lint-staged": "10.5.3",
+    "platform-detect": "3.0.1",
+    "prettier": "2.2.1",
+    "react-test-renderer": "17.0.1",
+    "ts-node": "9.1.1",
+    "typescript": "~4.0.0"
+  },
+  "scripts": {
+    "start": "react-native start",
+    "android": "node_modules/.bin/ts-node scripts/android",
+    "ios": "node_modules/.bin/ts-node scripts/ios",
+    "web": "node_modules/.bin/ts-node scripts/web",
+    "eject": "expo eject",
+    "postinstall": "node_modules/.bin/ts-node scripts/postinstall",
+    "test": "npx hardhat test && jest",
+    "web:deploy": "expo build:web && gh-pages -d web-build"
+  },
+  "private": true,
+  "name": "moralis-create-react-native-dapp",
+  "version": "1.0.0",
+  "homepage": "https://cawfree.github.io/create-react-native-dapp",
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "@cawfree",
+      "url": "https://github.com/cawfree"
+    }
+  ],
+  "keywords": [
+    "react",
+    "react-native",
+    "blockchain",
+    "dapp",
+    "ethereum",
+    "web3",
+    "starter",
+    "react-native-web"
+  ],
+  "react-native": {
+    "stream": "react-native-stream",
+    "crypto": "react-native-crypto",
+    "path": "path-browserify",
+    "process": "node-libs-browser/mock/process"
+  },
+  "jest": {
+    "preset": "react-native",
+    "testMatch": [
+      "**/__tests__/frontend/**/*.[jt]s?(x)"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook",
+      "pre-commit": "lint-staged",
+      "pre-push": "test"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": "eslint --fix --ext '.ts,.tsx,.js,.jsx' -c .eslintrc.json"
+  }
+}

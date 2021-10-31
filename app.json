@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "ios": {
+      "bundleIdentifier": "com.myreactdapp"
+    },
+    "android": {
+      "package": "com.myreactdapp"
+    },
+    "scheme": "myreactdapp",
+    "icon": "assets/image/app-icon.png",
+    "splash": {
+      "image": "assets/image/app-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#222222"
+    }
+  }
+}

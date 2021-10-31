@@ -1,0 +1,1 @@
+../../../../../node_modules/expo-updates-interface/ios/EXUpdatesInterface/EXUpdatesExternalInterface.h
