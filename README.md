@@ -1,4 +1,4 @@
-# `react-native-ethereum-boilerplate`
+# `ethereum-react-native-boilerplate`
 
 This project is using:
 
