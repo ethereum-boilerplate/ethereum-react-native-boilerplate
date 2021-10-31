@@ -1,4 +1,4 @@
-# React Native Boilerplate
+# `react-native-ethereum-boilerplate`
 
 This project is using:
 
@@ -7,6 +7,10 @@ This project is using:
 - [react-moralis](https://github.com/MoralisWeb3/react-moralis) for react hooks
 
 Check the corresponding docs for additional information and help.
+
+# ⭐️ `Star us`
+If this boilerplate helps you build Ethereum mobile dapps faster - please star this project, every star makes us very happy!
+
 
 ## Getting started
 
