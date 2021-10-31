@@ -25,16 +25,16 @@ function Transfer() {
   const [tx, setTx] = useState();
   const [amount, setAmount] = useState();
   const [isPending, setIsPending] = useState(false);
-  const [address, setAddress] = useState();
   const [validatedAddress, setValidatedAddress] = useState();
 
   useEffect(() => {
+    console.log(token, amount, receiver, "Update check");
     if (token && amount && receiver) setTx({ amount, receiver, token });
   }, [token, amount, receiver]);
 
   async function transfer() {
     const { amount, receiver, token } = tx;
-    console.log(isPending, "JI");
+    console.log(tx, "JI");
 
     const options = {
       type: "erc20",
@@ -53,7 +53,7 @@ function Transfer() {
         setIsPending(false);
       });
   }
-  console.log(token, "token");
+  // console.log(token, "token");
   return (
     <SafeAreaView style={[styles.container]}>
       <View style={[styles.flex1, styles.inputView]}>
@@ -64,9 +64,9 @@ function Transfer() {
           <View style={styles.flex4}>
             <TextInput
               label="Address"
-              value={address}
+              value={receiver}
               placeholder="Public address (0x)"
-              onChangeText={(text) => setAddress(text)}
+              onChangeText={(text) => setReceiver(text)}
               style={{ backgroundColor: "white" }}
               maxLength={42}
             />
@@ -81,6 +81,7 @@ function Transfer() {
             <TextInput
               label="Amount"
               value={amount}
+              keyboardType="numeric"
               onChangeText={(text) => setAmount(text)}
               style={{ backgroundColor: "white" }}
             />
@@ -102,10 +103,12 @@ function Transfer() {
       <View style={[styles.flex1, styles.justifyCenter]}>
         <Button
           mode="contained"
-          disabled={!tx}
-          style={styles.button}
+          disabled={!(token && receiver && amount)}
+          style={
+            token && receiver && amount ? styles.button : styles.diabledButton
+          }
           labelStyle={{ color: "white", fontSize: 20 }}
-          onPress={() => transfer()}
+          onPress={transfer}
           loading={isPending}>
           Transfer
         </Button>
@@ -153,6 +156,9 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "green",
     elevation: 5,
+  },
+  diabledButton: {
+    backgroundColor: "grey",
   },
   justifyCenter: {
     justifyContent: "space-around",
