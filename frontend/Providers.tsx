@@ -10,6 +10,8 @@ import { Platform } from "react-native";
 import Qrcode from "./Qrcode";
 import { expo } from "../app.json";
 import { MoralisDappProvider } from "./providers/MoralisDappProvider/MoralisDappProvider";
+import { ApplicationProvider, Layout, Text } from "@ui-kitten/components";
+import * as eva from "@eva-design/eva";
 
 interface ProvidersProps {
   readonly children: JSX.Element;
@@ -20,8 +22,8 @@ const { scheme } = expo;
 /**
  * Initialization of Moralis
  */
-const appId = "XXXX";
-const serverUrl = "XXXX";
+const appId = "yysXEyXOMPcuHz2fEfwqVx4tJClvhdzcaayjADYu";
+const serverUrl = "https://tqb47xjfxgeq.usemoralis.com:2053/server";
 const environment = "native";
 // Initialize Moralis with AsyncStorage to support react-native storage
 Moralis.setAsyncStorage(AsyncStorage);
@@ -47,7 +49,7 @@ const walletConnectOptions: WalletConnectProviderProps = {
     ],
   },
   // Uncomment to show a QR-code to connect a wallet
-  // renderQrcodeModal: Qrcode,
+  renderQrcodeModal: Qrcode,
 };
 
 export const Providers = ({ children }: ProvidersProps) => {
@@ -57,7 +59,11 @@ export const Providers = ({ children }: ProvidersProps) => {
         appId={appId}
         serverUrl={serverUrl}
         environment={environment}>
-        <MoralisDappProvider>{children}</MoralisDappProvider>
+        <MoralisDappProvider>
+          <ApplicationProvider {...eva} theme={eva.light}>
+            {children}
+          </ApplicationProvider>
+        </MoralisDappProvider>
       </MoralisProvider>
     </WalletConnectProvider>
   );

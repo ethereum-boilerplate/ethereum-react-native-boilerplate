@@ -6,7 +6,7 @@ import { n4 } from "../../utils/formatters";
 
 import { getNativeByChain } from "../../utils/getNativeByChain";
 
-function NativeBalance() {
+function NativeBalance(props) {
   const { account } = useMoralisWeb3Api();
   const { Moralis } = useMoralis();
   const { walletAddress, chainId: chain } = useMoralisDapp();
@@ -20,15 +20,17 @@ function NativeBalance() {
   }, [walletAddress]);
 
   const fetchNativeBalance = async () => {
-    const options = { address, chain };
+    const chainFinal = props?.chain || chainId;
+    const options = { address, chainFinal };
 
-    const native = getNativeByChain(chain);
+    const native = getNativeByChain(chainFinal);
 
     account
       .getNativeBalance(options)
       .then((result) => {
         const balanceInWei = Moralis.Units.FromWei(result.balance);
         const balanceFormatted = `${n4.format(balanceInWei)} ${native}`;
+        console.log(result, "RESULT");
         setNativeChainString(native);
         setNativeBalance(balanceFormatted);
       })
@@ -44,10 +46,12 @@ function NativeBalance() {
 
   return (
     <View style={styles.itemView}>
-      <Text style={styles.name}>{nativeChainString} Balance : </Text>
-      <View style={styles.nameView}>
+      <Text style={styles.name}>
+        {nativeChainString}💰{nativeBalance}{" "}
+      </Text>
+      {/* <View style={styles.nameView}>
         <Text style={styles.name}>{nativeBalance}</Text>
-      </View>
+      </View> */}
     </View>
   );
 }
@@ -60,6 +64,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 2,
     flex: 1,
     flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
   name: {
     fontSize: 15,

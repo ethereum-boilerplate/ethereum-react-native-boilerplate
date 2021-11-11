@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useMoralis } from "react-moralis";
-import {
-  Button,
-  ActivityIndicator,
-  Colors,
-  TextInput,
-  Card,
-} from "react-native-paper";
+import { useMoralis, useWeb3Transfer } from "react-moralis";
+import { Button } from "@ui-kitten/components";
+// import Test from "./Test";
+// import Moralis from "moralis/react-native";
+
+import { ActivityIndicator, Colors, TextInput, Card } from "react-native-paper";
 import { Blockie } from "../Blockie";
 import { faAddressBook, faCoins } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
@@ -15,11 +13,45 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { StyleSheet, SafeAreaView, StatusBar, View, Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import ERC20Balance from "../Assets/ERC20Balance";
+import { useWalletConnect } from "../../WalletConnect";
 
 const color = "#315399";
+const TransferERC20 = ({ amount, token, receiver }) => {
+  const { Moralis } = useMoralis();
+  const connector = useWalletConnect();
+
+  const tokenDecimals = token ? token.decimals : "18";
+  const tokenAddress = token ? token.token_address : "";
+
+  const { fetch, error, isFetching } = useWeb3Transfer(
+    {
+      amount: Moralis.Units.Token(1, tokenDecimals),
+      receiver: "0xE91e20FbA1B916e1993C8D135a62b15e14707077",
+      type: "erc20",
+      contractAddress: tokenAddress,
+    },
+    { autoFetch: false }
+  );
+
+  const TransferTheCoins = () => {
+    console.log(error);
+    fetch({ connector });
+  };
+
+  return (
+    <Button
+      mode="contained"
+      disabled={!(token && receiver && amount)}
+      style={token && receiver && amount ? styles.button : styles.diabledButton}
+      labelStyle={{ color: "white", fontSize: 20 }}
+      onPress={TransferTheCoins}
+      loading={isFetching}>
+      Transfer
+    </Button>
+  );
+};
 
 function Transfer() {
-  const { Moralis } = useMoralis();
   const [receiver, setReceiver] = useState();
   const [token, setToken] = useState();
   const [tx, setTx] = useState();
@@ -28,31 +60,10 @@ function Transfer() {
   const [validatedAddress, setValidatedAddress] = useState();
 
   useEffect(() => {
-    console.log(token, amount, receiver, "Update check");
+    // console.log(token, amount, receiver, "Update check");
     if (token && amount && receiver) setTx({ amount, receiver, token });
   }, [token, amount, receiver]);
 
-  async function transfer() {
-    const { amount, receiver, token } = tx;
-    console.log(tx, "JI");
-
-    const options = {
-      type: "erc20",
-      amount: Moralis.Units.Token(amount, token.decimals),
-      receiver,
-      contractAddress: token.token_address,
-    };
-    setIsPending(true);
-    await Moralis.transfer(options)
-      .then((tx) => {
-        console.log(tx);
-        setIsPending(false);
-      })
-      .catch((e) => {
-        alert(e.message);
-        setIsPending(false);
-      });
-  }
   // console.log(token, "token");
   return (
     <SafeAreaView style={[styles.container]}>
@@ -101,17 +112,7 @@ function Transfer() {
         <ERC20Balance setToken={setToken} />
       </View>
       <View style={[styles.flex1, styles.justifyCenter]}>
-        <Button
-          mode="contained"
-          disabled={!(token && receiver && amount)}
-          style={
-            token && receiver && amount ? styles.button : styles.diabledButton
-          }
-          labelStyle={{ color: "white", fontSize: 20 }}
-          onPress={transfer}
-          loading={isPending}>
-          Transfer
-        </Button>
+        <TransferERC20 amount={amount} token={token} receiver={receiver} />
       </View>
     </SafeAreaView>
   );

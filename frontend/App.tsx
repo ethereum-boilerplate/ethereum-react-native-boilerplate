@@ -84,6 +84,16 @@ function Home(): JSX.Element {
       // inactiveColor="#3e2465"
       barStyle={{ backgroundColor: "white" }}>
       <Tab.Screen
+        name="Assets"
+        options={{
+          tabBarLabel: "Assets",
+          tabBarIcon: ({ color }) => (
+            <FontAwesomeIcon icon={faCoins} color={color} size={20} />
+          ),
+        }}
+        component={Assets}
+      />
+      <Tab.Screen
         name="Recent Tx"
         options={{
           tabBarLabel: "Transactions",
@@ -103,16 +113,7 @@ function Home(): JSX.Element {
         }}
         component={Transfer}
       />
-      <Tab.Screen
-        name="Assets"
-        options={{
-          tabBarLabel: "Assets",
-          tabBarIcon: ({ color }) => (
-            <FontAwesomeIcon icon={faCoins} color={color} size={20} />
-          ),
-        }}
-        component={Assets}
-      />
+
       <Tab.Screen
         name="Profile"
         options={{
