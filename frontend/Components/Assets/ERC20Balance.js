@@ -12,7 +12,7 @@ import {
 import { getEllipsisTxt } from "../../utils/formatters";
 import useERC20Balance from "./hooks/useERC20balance";
 import useTokenPrice from "./hooks/useTokenPrice";
-import { List, Card, Divider } from "react-native-paper";
+import { Divider } from "react-native-paper";
 
 const DefaultLogoBasedOnChain = ({ chain }) => {
   if (chain == "0x1")
@@ -62,7 +62,6 @@ const Item = ({ name, logo, balance, symbol, price, tokenAddress, chain }) => {
   const tokenPriceInNumber = tokenPriceFormatted
     ? parseFloat(tokenPriceFormatted.substring(1).replace(/,/g, "")).toFixed(5)
     : 0;
-  console.log(balanceFormatted, tokenPriceInNumber, "TOKEN PRICE");
   return (
     <View style={styles.itemContainer}>
       <View style={styles.itemView}>
@@ -94,9 +93,7 @@ const Item = ({ name, logo, balance, symbol, price, tokenAddress, chain }) => {
 
 function ERC20Balance(props) {
   const { assets } = useERC20Balance(props);
-
   const { Moralis } = useMoralis();
-  // console.log(assets, "assets");
 
   const renderItem = ({ item }) => {
     return (

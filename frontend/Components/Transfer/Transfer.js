@@ -2,9 +2,6 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useMoralis, useWeb3Transfer } from "react-moralis";
 import { Button } from "@ui-kitten/components";
-// import Test from "./Test";
-// import Moralis from "moralis/react-native";
-
 import { ActivityIndicator, Colors, TextInput, Card } from "react-native-paper";
 import { Blockie } from "../Blockie";
 import { faAddressBook, faCoins } from "@fortawesome/free-solid-svg-icons";

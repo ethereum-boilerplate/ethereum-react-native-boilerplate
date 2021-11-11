@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { ActivityIndicator, View, StyleSheet, Image } from "react-native";
+import LottieView from "lottie-react-native";
 
 // import AsyncStorage from "@react-native-community/async-storage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Animation from "../splashLottie1.json";
 
 const SplashScreen = ({ navigation }) => {
   //State for ActivityIndicator animation
@@ -26,6 +28,7 @@ const SplashScreen = ({ navigation }) => {
         source={require("../moralis-logo.png")}
         style={{ width: "90%", resizeMode: "contain", margin: 30 }}
       />
+      <LottieView source={Animation} loop autoplay />
       <ActivityIndicator
         animating={animating}
         color="#FFFFFF"
@@ -43,7 +46,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#307ecc",
+    backgroundColor: "white",
   },
   activityIndicator: {
     alignItems: "center",

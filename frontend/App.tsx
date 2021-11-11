@@ -1,10 +1,5 @@
-import React, { useEffect } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import {
-  useMoralis,
-  useMoralisWeb3Api,
-  useMoralisWeb3ApiCall,
-} from "react-moralis";
+import React from "react";
+import { useMoralis } from "react-moralis";
 import { useWalletConnect } from "./WalletConnect";
 import {
   NavigationContainer,
@@ -31,30 +26,21 @@ import {
 
 import Moralis from "moralis/types";
 
-const styles = StyleSheet.create({
-  center: { alignItems: "center", justifyContent: "center", flex: 1 },
-  topCenter: { alignItems: "center" },
-  blue: { backgroundColor: "blue" },
-  red: { backgroundColor: "red" },
-  margin: { marginBottom: 20 },
-  marginLarge: { marginBottom: 35 },
-  weightHeavey: { fontWeight: "700", fontSize: 20 },
-});
-
+// const Activecolor =
 function Home(): JSX.Element {
   return (
     <Tab.Navigator
       shifting={false}
-      // activeColor="#f0edf6"
+      activeColor="#315399"
       // inactiveColor="#3e2465"
       barStyle={{ backgroundColor: "white" }}>
       <Tab.Screen
         name="Assets"
         options={{
           tabBarLabel: "Assets",
-          tabBarIcon: ({ color }) => (
-            <FontAwesomeIcon icon={faCoins} color={color} size={20} />
-          ),
+          tabBarIcon: ({ color, focused }) => {
+            return <FontAwesomeIcon icon={faCoins} color={color} size={20} />;
+          },
         }}
         component={Assets}
       />
