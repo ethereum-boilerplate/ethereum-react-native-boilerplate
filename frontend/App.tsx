@@ -6,7 +6,10 @@ import {
   useMoralisWeb3ApiCall,
 } from "react-moralis";
 import { useWalletConnect } from "./WalletConnect";
-import { NavigationContainer } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  getFocusedRouteNameFromRoute,
+} from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
@@ -16,6 +19,7 @@ import RecentTransactions from "./Components/RecentTransactions/RecentTransactio
 import Assets from "./Components/Assets/Assets";
 import Transfer from "./Components/Transfer/Transfer";
 import Profile from "./Components/Profile/Profile";
+import Header from "./Components/Header";
 
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {
@@ -37,45 +41,6 @@ const styles = StyleSheet.create({
   weightHeavey: { fontWeight: "700", fontSize: 20 },
 });
 
-function Web3ApiExample(): JSX.Element {
-  const { Moralis, user } = useMoralis();
-  const chainNAme = "eth";
-  const {
-    account: { getNativeBalance },
-  } = useMoralisWeb3Api();
-
-  //defaults to eth chain and user logged in address, if you want custom, you can pass in the options argument
-  const { data, isFetching, error } = useMoralisWeb3ApiCall(getNativeBalance);
-
-  if (isFetching) {
-    return (
-      <View style={styles.marginLarge}>
-        <Text>Fetching token-balances...</Text>
-      </View>
-    );
-  }
-
-  if (error) {
-    return (
-      <View style={styles.marginLarge}>
-        <Text>Error:</Text>
-        <Text>{JSON.stringify(error)}</Text>
-      </View>
-    );
-  }
-
-  return (
-    <View style={styles.marginLarge}>
-      <Text style={styles.weightHeavey}>Native balance</Text>
-
-      <Text style={styles.weightHeavey}>
-        {/* @ts-ignore */}
-        {data ? data.balance / ("1e" + "18") : "none"}
-      </Text>
-    </View>
-  );
-}
-
 function Home(): JSX.Element {
   return (
     <Tab.Navigator
@@ -94,7 +59,7 @@ function Home(): JSX.Element {
         component={Assets}
       />
       <Tab.Screen
-        name="Recent Tx"
+        name="Transactions"
         options={{
           tabBarLabel: "Transactions",
           tabBarIcon: ({ color }) => (
@@ -130,6 +95,23 @@ function Home(): JSX.Element {
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
+function getHeaderTitle(route) {
+  // If the focused route is not found, we need to assume it's the initial screen
+  // This can happen during if there hasn't been any navigation inside the screen
+  // In our case, it's "Feed" as that's the first screen inside the navigator
+  const routeName = getFocusedRouteNameFromRoute(route) ?? "Feed";
+
+  switch (routeName) {
+    case "Assets":
+      return "Assets";
+    case "Transfer":
+      return "Transfer";
+    case "Transactions":
+      return "Transactions";
+    case "Profile":
+      return "Profile";
+  }
+}
 
 function App(): JSX.Element {
   const connector = useWalletConnect();
@@ -163,7 +145,10 @@ function App(): JSX.Element {
           name="DrawerNavigationRoutes"
           component={Home}
           // Hiding header for Navigation Drawer
-          options={{ headerShown: true, title: "Assets" }}
+          options={{ headerTitle: (props) => <Header /> }}
+          // options={({ route }) => ({
+          //   headerTitle: getHeaderTitle(route),
+          // })}
         />
       </Stack.Navigator>
     </NavigationContainer>

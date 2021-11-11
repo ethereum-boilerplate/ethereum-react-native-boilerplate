@@ -14,6 +14,42 @@ import useERC20Balance from "./hooks/useERC20balance";
 import useTokenPrice from "./hooks/useTokenPrice";
 import { List, Card, Divider } from "react-native-paper";
 
+const DefaultLogoBasedOnChain = ({ chain }) => {
+  if (chain == "0x1")
+    return (
+      <Image
+        source={{
+          uri:
+            "https://ethereum.org/static/6f05d59dc633140e4b547cb92f22e781/a7715/eth-diamond-purple-white.jpg",
+        }}
+        style={styles.logo}></Image>
+    );
+  else if (chain == "0x38")
+    return (
+      <Image
+        source={{
+          uri:
+            "https://assets.trustwalletapp.com/blockchains/smartchain/info/logo.png",
+        }}
+        style={styles.logo}></Image>
+    );
+  else if (chain == "0x89")
+    return (
+      <Image
+        source={{ uri: "https://cryptologos.cc/logos/polygon-matic-logo.png" }}
+        style={styles.logo}></Image>
+    );
+  else
+    return (
+      <Image
+        source={{
+          uri:
+            "https://ethereum.org/static/6f05d59dc633140e4b547cb92f22e781/a7715/eth-diamond-purple-white.jpg",
+        }}
+        style={styles.logo}></Image>
+    );
+};
+
 const Item = ({ name, logo, balance, symbol, price, tokenAddress, chain }) => {
   const priceOptions = { chain: chain, address: tokenAddress };
 
@@ -27,7 +63,6 @@ const Item = ({ name, logo, balance, symbol, price, tokenAddress, chain }) => {
     ? parseFloat(tokenPriceFormatted.substring(1).replace(/,/g, "")).toFixed(5)
     : 0;
   console.log(balanceFormatted, tokenPriceInNumber, "TOKEN PRICE");
-
   return (
     <View style={styles.itemContainer}>
       <View style={styles.itemView}>
@@ -35,12 +70,7 @@ const Item = ({ name, logo, balance, symbol, price, tokenAddress, chain }) => {
           {logo ? (
             <Image source={{ uri: logo }} style={styles.logo} />
           ) : (
-            <Image
-              source={{
-                uri: "https://etherscan.io/images/main/empty-token.png",
-              }}
-              style={styles.logo}
-            />
+            <DefaultLogoBasedOnChain chain={chain} />
           )}
         </View>
         <View style={{ flex: 2, justifyContent: "center" }}>
@@ -117,7 +147,7 @@ const styles = StyleSheet.create({
   },
   dollarBalance: {
     fontSize: 15,
-    color: "grey",
+    color: "#414a4c",
     fontWeight: "600",
   },
   name: {

@@ -49,9 +49,6 @@ function NativeBalance(props) {
       <Text style={styles.name}>
         {nativeChainString}💰{nativeBalance}{" "}
       </Text>
-      {/* <View style={styles.nameView}>
-        <Text style={styles.name}>{nativeBalance}</Text>
-      </View> */}
     </View>
   );
 }
@@ -62,6 +59,8 @@ const styles = StyleSheet.create({
     padding: 20,
     // marginVertical: 8,
     marginHorizontal: 2,
+    marginVertical: 5,
+    borderRadius: 10,
     flex: 1,
     flexDirection: "row",
     justifyContent: "center",
