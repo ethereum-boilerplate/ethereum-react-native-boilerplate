@@ -63,54 +63,64 @@ function Transfer() {
 
   // console.log(token, "token");
   return (
-    <SafeAreaView style={[styles.container]}>
-      <View style={[styles.flex1, styles.inputView]}>
-        <View style={styles.viewContainer}>
-          <View style={[styles.flex1, { marginTop: 22 }]}>
-            <FontAwesomeIcon icon={faAddressBook} size={40} color={color} />
-          </View>
-          <View style={styles.flex4}>
-            <TextInput
-              label="Address"
-              value={receiver}
-              placeholder="Public address (0x)"
-              onChangeText={(text) => setReceiver(text)}
-              style={{ backgroundColor: "white" }}
-              maxLength={42}
-            />
-          </View>
-        </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <View style={styles.scrollViewContainer}>
+          <Text style={styles.headerText} category="h4">
+            🚀 Transfer
+          </Text>
 
-        <View style={styles.viewContainer}>
-          <View style={[styles.flex1, { marginTop: 22 }]}>
-            <FontAwesomeIcon icon={faCoins} size={40} color={color} />
-          </View>
-          <View style={styles.flex4}>
-            <TextInput
-              label="Amount"
-              value={amount}
-              keyboardType="numeric"
-              onChangeText={(text) => setAmount(text)}
-              style={{ backgroundColor: "white" }}
-            />
-          </View>
-        </View>
+          <View style={[styles.flex1, styles.inputView]}>
+            <View style={styles.viewContainer}>
+              <View style={[styles.flex1, { marginTop: 22 }]}>
+                <FontAwesomeIcon icon={faAddressBook} size={40} color={color} />
+              </View>
+              <View style={styles.flex4}>
+                <TextInput
+                  label="Address"
+                  value={receiver}
+                  placeholder="Public address (0x)"
+                  onChangeText={(text) => setReceiver(text)}
+                  style={{ backgroundColor: "white" }}
+                  maxLength={42}
+                />
+              </View>
+            </View>
 
-        <View style={styles.viewContainer}>
-          <View style={{ flex: 1 }}>
-            <Text style={styles.labelText}>Asset:</Text>
+            <View style={styles.viewContainer}>
+              <View style={[styles.flex1, { marginTop: 22 }]}>
+                <FontAwesomeIcon icon={faCoins} size={40} color={color} />
+              </View>
+              <View style={styles.flex4}>
+                <TextInput
+                  label="Amount"
+                  value={amount}
+                  keyboardType="numeric"
+                  onChangeText={(text) => setAmount(text)}
+                  style={{ backgroundColor: "white" }}
+                />
+              </View>
+            </View>
+
+            <View style={styles.viewContainer}>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.labelText}>Asset:</Text>
+              </View>
+              <View style={{ flex: 4 }}>
+                <Text style={styles.labelText}>
+                  {token ? token.symbol : ""}
+                </Text>
+              </View>
+            </View>
           </View>
-          <View style={{ flex: 4 }}>
-            <Text style={styles.labelText}>{token ? token.symbol : ""}</Text>
+          <View>
+            <ERC20Balance setToken={setToken} />
+          </View>
+          <View style={[styles.flex1, styles.justifyCenter]}>
+            <TransferERC20 amount={amount} token={token} receiver={receiver} />
           </View>
         </View>
-      </View>
-      <View>
-        <ERC20Balance setToken={setToken} />
-      </View>
-      <View style={[styles.flex1, styles.justifyCenter]}>
-        <TransferERC20 amount={amount} token={token} receiver={receiver} />
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -120,14 +130,21 @@ export default Transfer;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
+    justifyContent: "center",
     marginTop: StatusBar.currentHeight || 0,
-    justifyContent: "space-around",
     backgroundColor: "white",
+  },
+  scrollViewContainer: {
     paddingHorizontal: 20,
+    paddingTop: 10,
   },
   viewContainer: {
     flexDirection: "row",
+  },
+  headerText: {
+    color: "black",
+    fontWeight: "600",
+    fontSize: 30,
   },
   inputView: {
     borderColor: "grey",

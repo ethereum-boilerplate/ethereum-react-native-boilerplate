@@ -7,6 +7,7 @@ import {
   Image,
   StyleSheet,
   Pressable,
+  ActivityIndicator,
 } from "react-native";
 import { getEllipsisTxt } from "../../utils/formatters";
 import useERC20Balance from "./hooks/useERC20balance";
@@ -61,6 +62,7 @@ const Item = ({ name, logo, balance, symbol, price, tokenAddress, chain }) => {
   const tokenPriceInNumber = tokenPriceFormatted
     ? parseFloat(tokenPriceFormatted.substring(1).replace(/,/g, "")).toFixed(5)
     : 0;
+
   return (
     <View style={styles.itemContainer}>
       <View style={styles.itemView}>
@@ -78,13 +80,18 @@ const Item = ({ name, logo, balance, symbol, price, tokenAddress, chain }) => {
           </Text>
         </View>
         <View
-          style={{ flex: 2, justifyContent: "center", alignItems: "flex-end" }}>
+          style={{
+            flex: 2,
+            justifyContent: "center",
+            alignItems: "flex-end",
+          }}>
           <Text style={styles.dollarBalance}>
             ${parseFloat(tokenPriceInNumber * balanceFormatted).toFixed(3)}
           </Text>
           <Text style={styles.balance}>{tokenPriceFormatted}</Text>
         </View>
       </View>
+
       <Divider style={{ width: "95%" }} />
     </View>
   );
