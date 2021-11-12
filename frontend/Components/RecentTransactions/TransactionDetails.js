@@ -42,7 +42,7 @@ function TransactionDetails(props) {
   );
 
   return (
-    <Card disabled={true}>
+    <Card disabled={true} style={styles.cardView}>
       <View style={styles.centeredView}>
         <Text style={styles.headerText}>👓Transaction Details</Text>
         <Divider />
@@ -101,6 +101,9 @@ function TransactionDetails(props) {
 }
 
 const styles = StyleSheet.create({
+  cardView: {
+    borderRadius: 15,
+  },
   centeredView: {
     flex: 1,
     paddingHorizontal: 5,

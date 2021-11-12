@@ -5,11 +5,13 @@ import {
   StyleSheet,
   Clipboard,
   TouchableOpacity,
+  Image,
 } from "react-native";
 import { useMoralisDapp } from "../providers/MoralisDappProvider/MoralisDappProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import { Tooltip } from "@ui-kitten/components";
+import BlockieImage from "../Blockie.png";
 
 export default function Headeer() {
   const { walletAddress, chainId } = useMoralisDapp();
@@ -25,6 +27,8 @@ export default function Headeer() {
       <TouchableOpacity
         style={styles.viewContainer}
         onPress={() => copyToClipboard()}>
+        <Image source={BlockieImage} style={styles.imageContainer} />
+
         <Text
           style={styles.headerText}
           ellipsizeMode={"middle"}
@@ -52,6 +56,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+  },
+  imageContainer: {
+    height: 20,
+    width: 20,
+    borderRadius: 20,
   },
   headerText: {
     width: 130,

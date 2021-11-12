@@ -21,6 +21,7 @@ import {
   TouchableOpacity,
 } from "react-native-gesture-handler";
 import TransactionDetails from "./TransactionDetails";
+import { ActivityIndicator } from "react-native-paper";
 
 const Item = ({ address, Moralis, value, logo, hash }) => (
   <View style={styles.itemContainer}>
@@ -51,6 +52,8 @@ function RecentTransactions() {
   const [transactionDetails, setTransactionDetails] = useState(false);
 
   // console.log(ERC20Transfers ? ERC20Transfers[0] : "");
+
+  useEffect(() => {}, [ERC20Transfers]);
 
   function onPressTransaction(item) {
     setTransactionDetails(item);
@@ -91,14 +94,17 @@ function RecentTransactions() {
           <Text style={styles.headerText} category="h4">
             💸 Transactions
           </Text>
-          <Text style={styles.subheader}>Confimed Transactions</Text>
-
-          <FlatList
-            data={ERC20Transfers}
-            renderItem={renderItem}
-            keyExtractor={(item, index) => index.toString()}
-            scrollEnabled={false}
-          />
+          <Text style={styles.subheader}>ERC20 Transactions</Text>
+          {ERC20Transfers ? (
+            <FlatList
+              data={ERC20Transfers}
+              renderItem={renderItem}
+              keyExtractor={(item, index) => index.toString()}
+              scrollEnabled={false}
+            />
+          ) : (
+            <ActivityIndicator />
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>
