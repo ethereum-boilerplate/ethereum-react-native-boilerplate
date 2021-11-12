@@ -13,7 +13,7 @@ import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import { Tooltip } from "@ui-kitten/components";
 import BlockieImage from "../Blockie.png";
 
-export default function Headeer() {
+export default function Header() {
   const { walletAddress, chainId } = useMoralisDapp();
   const [tipVisible, setTipVisible] = useState(false);
 

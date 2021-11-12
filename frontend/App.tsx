@@ -15,6 +15,7 @@ import Assets from "./Components/Assets/Assets";
 import Transfer from "./Components/Transfer/Transfer";
 import Profile from "./Components/Profile/Profile";
 import Header from "./Components/Header";
+import QuickStart from "./Components/QuickStart";
 
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {
@@ -22,6 +23,7 @@ import {
   faCoins,
   faUser,
   faPaperPlane,
+  faRocket,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Moralis from "moralis/types";
@@ -34,6 +36,17 @@ function Home(): JSX.Element {
       activeColor="#315399"
       // inactiveColor="#3e2465"
       barStyle={{ backgroundColor: "white" }}>
+      {/* <Tab.Screen
+        name="QuickStart"
+        options={{
+          tabBarLabel: "QuickStart",
+          tabBarIcon: ({ color, focused }) => {
+            return <FontAwesomeIcon icon={faRocket} color={color} size={20} />;
+          },
+        }}
+        component={QuickStart}
+      /> */}
+
       <Tab.Screen
         name="Assets"
         options={{
