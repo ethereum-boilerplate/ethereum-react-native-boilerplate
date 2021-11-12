@@ -14,6 +14,7 @@ import NativeBalance from "./NativeBalance";
 import ERC20Balance from "./ERC20Balance";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faUniversity } from "@fortawesome/free-solid-svg-icons";
+import { Card } from "@ui-kitten/components";
 
 export default function Assets() {
   const { Moralis } = useMoralis();
@@ -52,6 +53,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     marginTop: StatusBar.currentHeight || 0,
+    backgroundColor: "white",
   },
   chainText: {
     fontSize: 15,
@@ -61,7 +63,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   headerText: {
-    color: "#414a4c",
+    color: "black",
     fontWeight: "600",
     fontSize: 35,
   },

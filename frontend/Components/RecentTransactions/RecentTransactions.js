@@ -7,13 +7,14 @@ import {
   View,
   FlatList,
   StatusBar,
+  ScrollView,
   Image,
 } from "react-native";
 import { getEllipsisTxt } from "../../utils/formatters";
 import useERC20Transfers from "./hooks/useERC20Transfers";
 import { faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { List, Divider } from "react-native-paper";
+import { Divider } from "@ui-kitten/components";
 
 const Item = ({ address, Moralis, value, logo }) => (
   <View style={styles.itemContainer}>
@@ -44,16 +45,22 @@ function RecentTransactions() {
   };
 
   return (
-    <SafeAreaView style={styles.flex1}>
-      <View style={styles.container}>
-        <Text style={styles.subheader}>Confimed Transactions</Text>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <View style={styles.viewContainer}>
+          <Text style={styles.headerText} category="h4">
+            💸 Transactions
+          </Text>
+          <Text style={styles.subheader}>Confimed Transactions</Text>
 
-        <FlatList
-          data={ERC20Transfers}
-          renderItem={renderItem}
-          keyExtractor={(item, index) => index.toString()}
-        />
-      </View>
+          <FlatList
+            data={ERC20Transfers}
+            renderItem={renderItem}
+            keyExtractor={(item, index) => index.toString()}
+            scrollEnabled={false}
+          />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -61,16 +68,18 @@ function RecentTransactions() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: "center",
     justifyContent: "center",
-    // backgroundColor: "red",
-    paddingTop: 20,
-    marginTop: 20,
-    paddingHorizontal: 10,
-
     marginTop: StatusBar.currentHeight || 0,
-
-    // color: "red",
+    backgroundColor: "white",
+  },
+  viewContainer: {
+    paddingHorizontal: 20,
+    paddingTop: 10,
+  },
+  headerText: {
+    color: "black",
+    fontWeight: "600",
+    fontSize: 30,
   },
   blue: {
     backgroundColor: "blue",
@@ -96,9 +105,10 @@ const styles = StyleSheet.create({
   },
   subheader: {
     fontSize: 15,
-    fontWeight: "500",
-    color: "grey",
-    paddingBottom: 10,
+    color: "#414a4c",
+    paddingTop: 20,
+    paddingHorizontal: 5,
+    fontWeight: "600",
   },
   activityIndicator: {
     alignItems: "center",

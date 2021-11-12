@@ -8,11 +8,10 @@ import {
   StyleSheet,
   Pressable,
 } from "react-native";
-// import { Flex  } from "../../uikit/Flex/Flex";
 import { getEllipsisTxt } from "../../utils/formatters";
 import useERC20Balance from "./hooks/useERC20balance";
 import useTokenPrice from "./hooks/useTokenPrice";
-import { Divider } from "react-native-paper";
+import { Divider } from "@ui-kitten/components";
 
 const DefaultLogoBasedOnChain = ({ chain }) => {
   if (chain == "0x1")
@@ -86,7 +85,7 @@ const Item = ({ name, logo, balance, symbol, price, tokenAddress, chain }) => {
           <Text style={styles.balance}>{tokenPriceFormatted}</Text>
         </View>
       </View>
-      <Divider />
+      <Divider style={{ width: "95%" }} />
     </View>
   );
 };
@@ -128,6 +127,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
   },
   itemView: {
     backgroundColor: "white",

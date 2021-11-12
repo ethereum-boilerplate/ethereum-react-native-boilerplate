@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: StatusBar.currentHeight || 0,
+    backgroundColor: "white",
   },
   button: {
     width: 200,

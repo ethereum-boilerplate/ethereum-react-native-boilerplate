@@ -9,12 +9,6 @@ const useTokenPrice = (options) => {
 
   useEffect(() => {
     if (isInitialized) {
-      console.log(
-        isInitialized,
-        options.chain,
-        options.address,
-        "ISINITIALISED"
-      );
       fetchTokenPrice(options)
         .then((price) => {
           // usdPrice is a number, format() returns a string
@@ -26,7 +20,7 @@ const useTokenPrice = (options) => {
           price.nativePrice = tokenValueTxt(value, decimals, symbol);
           setTokenPrice(price);
         })
-        .catch((e) => alert(e.message));
+        .catch((e) => setTokenPrice(0));
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -37,7 +31,7 @@ const useTokenPrice = (options) => {
     return await token
       .getTokenPrice({ chain, address })
       .then((result) => result)
-      .catch((e) => alert(e.message));
+      .catch((e) => console.log("Fetch Price error", e.message));
   };
   return { fetchTokenPrice, tokenPrice };
 };
