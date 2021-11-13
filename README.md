@@ -51,7 +51,7 @@ yarn install
 
 # 🧭 Table of contents
 
-- [`ethereum-boilerplate`](#ethereum-boilerplate)
+- [`ethereum-react-native-boilerplate`](#ethereum-react-native-boilerplate)
 - [🚀 Quick Start](#-quick-start)
 - [🧭 Table of contents](#-table-of-contents)
 - [🏗 Ethereum Components](#-ethereum-components)
