@@ -1,7 +1,7 @@
 # `ethereum-react-native-boilerplate`
 
-> React Native components and hooks for fast building dApps without running own backend
 
+> React Native components and hooks for fast building dApps without running own backend
 
 This project is using:
 
@@ -24,7 +24,6 @@ App Home            |  WalletConnect Authentication
 # ⭐️ `Star us`
 
 If this boilerplate helps you build Ethereum mobile dapps faster - please star this project, every star makes us very happy!
-
 
 
 
