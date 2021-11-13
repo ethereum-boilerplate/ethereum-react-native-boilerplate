@@ -1,4 +1,4 @@
-import React, { useState, createRef } from "react";
+import React, { useState, createRef, useRef } from "react";
 import {
   StyleSheet,
   TextInput,
@@ -10,6 +10,9 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   Linking,
+  Animated,
+  Dimensions,
+  ImageBackground,
 } from "react-native";
 import {
   Button,
@@ -26,10 +29,14 @@ import {
   useMoralisWeb3ApiCall,
 } from "react-moralis";
 import { useWalletConnect } from "../WalletConnect";
+import LottieView from "lottie-react-native";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Animation from "../splashLottie.json";
 
 // import Loader from './Components/Loader';
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 
 const LoginScreen = ({ navigation }) => {
   const connector = useWalletConnect();
@@ -55,24 +62,25 @@ const LoginScreen = ({ navigation }) => {
   const passwordInputRef = createRef();
 
   const handleCryptoLogin = () => {
-    authenticate({ connector })
-      .then(() => {
-        if (authError) {
-          setErrortext(authError.message);
-          setVisible(true);
-        } else {
-          if (isAuthenticated) {
-            navigation.replace("DrawerNavigationRoutes");
-          }
-        }
-      })
-      .catch(() => {});
+    navigation.replace("DrawerNavigationRoutes");
+
+    // authenticate({ connector })
+    //   .then(() => {
+    //     if (authError) {
+    //       setErrortext(authError.message);
+    //       setVisible(true);
+    //     } else {
+    //       if (isAuthenticated) {
+    //         navigation.replace("DrawerNavigationRoutes");
+    //       }
+    //     }
+    //   })
+    //   .catch(() => {});
   };
 
   return (
     <Provider>
       <View style={styles.mainBody}>
-        {/* <Loader loading={loading} /> */}
         <ScrollView
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{
@@ -80,9 +88,17 @@ const LoginScreen = ({ navigation }) => {
             justifyContent: "center",
             alignContent: "center",
           }}>
-          <View>
+          <Image
+            style={{ flex: 1 }}
+            source={{
+              uri:
+                "https://ethereum.org/static/ddb9a22d53fdaaae70c0a0d94577f2aa/31987/eth.png",
+            }}
+          />
+          <View style={{ flex: 1 }}>
             <KeyboardAvoidingView enabled>
               <View style={{ alignItems: "center" }}>
+                <LottieView source={Animation} loop autoPlay />
                 <Image
                   source={require("../moralis-logo.png")}
                   style={{
@@ -113,17 +129,6 @@ const LoginScreen = ({ navigation }) => {
                 {isAuthenticating && (
                   <ActivityIndicator animating={true} color={"white"} />
                 )}
-                <Button
-                  buttonStyle={{ width: 200, backgroundColor: "green" }}
-                  containerStyle={{ margin: 5 }}
-                  disabledStyle={{
-                    borderWidth: 2,
-                    borderColor: "#00F",
-                  }}
-                  onPress={() => authenticate({ connector })}
-                  loadingProps={{ animating: true }}
-                  loading={isAuthenticating}
-                  title="Authenticate With Crypto Wallet"></Button>
               </View>
 
               <TouchableOpacity
@@ -152,7 +157,7 @@ const styles = StyleSheet.create({
   mainBody: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: "#307ecc",
+    backgroundColor: "white",
     alignContent: "center",
   },
   SectionStyle: {
@@ -180,6 +185,7 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     paddingVertical: 10,
     fontSize: 16,
+    fontWeight: "600",
   },
   inputStyle: {
     flex: 1,
@@ -191,7 +197,7 @@ const styles = StyleSheet.create({
     borderColor: "#dadae8",
   },
   registerTextStyle: {
-    color: "#FFFFFF",
+    color: "black",
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 14,
