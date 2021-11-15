@@ -62,20 +62,18 @@ const LoginScreen = ({ navigation }) => {
   const passwordInputRef = createRef();
 
   const handleCryptoLogin = () => {
-    navigation.replace("DrawerNavigationRoutes");
-
-    // authenticate({ connector })
-    //   .then(() => {
-    //     if (authError) {
-    //       setErrortext(authError.message);
-    //       setVisible(true);
-    //     } else {
-    //       if (isAuthenticated) {
-    //         navigation.replace("DrawerNavigationRoutes");
-    //       }
-    //     }
-    //   })
-    //   .catch(() => {});
+    authenticate({ connector })
+      .then(() => {
+        if (authError) {
+          setErrortext(authError.message);
+          setVisible(true);
+        } else {
+          if (isAuthenticated) {
+            navigation.replace("DrawerNavigationRoutes");
+          }
+        }
+      })
+      .catch(() => {});
   };
 
   return (
