@@ -12,7 +12,7 @@ import {
   Alert,
 } from "react-native";
 import { getEllipsisTxt } from "../../utils/formatters";
-import useERC20Transfers from "./hooks/useERC20Transfers";
+import useERC20Transfers from "../../hooks/useERC20Transfers";
 import { faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { Divider, Modal, Button, Card } from "@ui-kitten/components";

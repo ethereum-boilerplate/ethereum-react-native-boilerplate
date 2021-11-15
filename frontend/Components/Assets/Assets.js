@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMoralis } from "react-moralis";
-import useERC20Balance from "./hooks/useERC20balance";
+import useERC20Balance from "../../hooks/useERC20balance";
 import {
   StyleSheet,
   View,
