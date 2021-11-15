@@ -10,8 +10,8 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { getEllipsisTxt } from "../../utils/formatters";
-import useERC20Balance from "./hooks/useERC20balance";
-import useTokenPrice from "./hooks/useTokenPrice";
+import useERC20Balance from "../../hooks/useERC20balance";
+import useTokenPrice from "../../hooks/useTokenPrice";
 import { Divider } from "@ui-kitten/components";
 
 const DefaultLogoBasedOnChain = ({ chain }) => {
