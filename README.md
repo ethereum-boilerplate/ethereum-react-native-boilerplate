@@ -68,6 +68,10 @@ yarn install
     - [`useERC20balance()`](#useerc20balance)
     - [`useERC20Transfers()`](#useerc20transfers)
 
+  - [`useTokenPrice()`](#usetokenprice)
+  - [`useERC20balance()`](#useerc20balance)
+  - [`useERC20Transfers()`](#useerc20transfers)
+
 - [🧰 Ethereum Hooks](#-ethereum-hooks)
   - [`useTokenPrice()`](#usetokenPrice)
   - [`useERC20Balance()`](#useerc20balance)
