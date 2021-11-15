@@ -67,7 +67,7 @@ yarn install
     - [`useTokenPrice()`](#usetokenprice)
     - [`useERC20balance()`](#useerc20balance)
     - [`useERC20Transfers()`](#useerc20transfers)
-    - [`useNativeTransactions`](#usenativetransactions)
+    - [`useNativeTransactions()`](#usenativetransactions)
     - [`useTokenPrice()`](#usetokenprice)
     - [`useNFTTransfers()`](#usenfttransfers)
     - [`useNFTBalance()`](#usenftbalance)
@@ -110,8 +110,6 @@ yarn install
 Displays The user address that is copyable
 
 # 🧰 Ethereum Hooks
-
-### `useTokenPrice()`
 
 ### `useERC20balance()`
 
@@ -160,6 +158,7 @@ const { fetchERC20Balance, assets } = useERC20Balance({ chain : "eth" });
 **Returns** (Array) : native transactions
 
 ### `useTokenPrice()`
+
 
 ### `useNFTTransfers()`
 
