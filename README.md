@@ -36,6 +36,14 @@ git clone https://github.com/ethereum-boilerplate/ethereum-react-native-boilerpl
 npm i -g expo-cli
 ```
 
+✏ Rename `.env.example` to `.env` in the main folder and provide your `appId` and `serverUrl` from Moralis ([How to start Moralis Server](https://docs.moralis.io/moralis-server/getting-started/create-a-moralis-server))
+Example:
+
+```jsx
+REACT_APP_MORALIS_APPLICATION_ID = xxxxxxxxxxxx
+REACT_APP_MORALIS_SERVER_URL = https://xxxxxx.grandmoralis.com:2053/server
+```
+
 💿 Install all dependencies:
 
 ```sh
@@ -64,7 +72,6 @@ yarn install
     - [`<TransactionDetails />`](#transactiondetails-)
     - [`<Address />`](#address-)
 - [🧰 Ethereum Hooks](#-ethereum-hooks)
-    - [`useTokenPrice()`](#usetokenprice)
     - [`useERC20balance()`](#useerc20balance)
     - [`useERC20Transfers()`](#useerc20transfers)
     - [`useNativeTransactions()`](#usenativetransactions)
@@ -113,9 +120,10 @@ Displays The user address that is copyable
 
 ### `useERC20balance()`
 
-💰 Gets all token balances of a current user or specified address. 
+💰 Gets all token balances of a current user or specified address.
 
 **Options**:
+
 - `chain` (optional): The blockchain to get data from. Valid values are listed on the intro page in the Transactions and Balances section. Default value: current chain.
 - `address` (optional): A user address (i.e. 0x1a2b3x...). If specified, the user attached to the query is ignored and the address will be used instead.
 - `to_block` (optional): The block number on which the balances should be checked
@@ -123,18 +131,19 @@ Displays The user address that is copyable
 **Returns** (Object) : number of tokens and the array of token objects
 
 ```jsx
-const { fetchERC20Balance, assets } = useERC20Balance({ chain : "eth" });
+const { fetchERC20Balance, assets } = useERC20Balance({ chain: "eth" });
 ```
 
 ### `useERC20Transfers()`
 
-🧾 Gets ERC20 token transfers of a current user or specified address. 
+🧾 Gets ERC20 token transfers of a current user or specified address.
 
 **Options**:
+
 - `chain` (optional): The blockchain to get data from. Valid values are listed on the intro page in the Transactions and Balances section. Default value: current chain.
 - `address` (optional): A user address (i.e. 0x1a2b3x...). If specified, the user attached to the query is ignored and the address will be used instead.
 - `from_date` (optional): The date from where to get the transactions (any format that is accepted by momentjs). Provide the param 'from_block' or 'from_date' If 'from_date' and 'from_block' are provided, 'from_block' will be used.
-- `to_date` (optional):  Get the transactions to this date (any format that is accepted by momentjs). Provide the param 'to_block' or 'to_date' If 'to_date' and 'to_block' are provided, 'to_block' will be used.
+- `to_date` (optional): Get the transactions to this date (any format that is accepted by momentjs). Provide the param 'to_block' or 'to_date' If 'to_date' and 'to_block' are provided, 'to_block' will be used.
 - `from_block` (optional): The minimum block number from where to get the transactions Provide the param 'from_block' or 'from_date' If 'from_date' and 'from_block' are provided, 'from_block' will be used.
 - `to_block` (optional): The maximum block number from where to get the transactions. Provide the param 'to_block' or 'to_date' If 'to_date' and 'to_block' are provided, 'to_block' will be used.
 - `offset` (optional): Offset.
@@ -143,13 +152,15 @@ const { fetchERC20Balance, assets } = useERC20Balance({ chain : "eth" });
 **Returns** (Array) : ERC20 token transfers
 
 ### `useNativeTransactions()`
-🧾 Gets the transactions from the current user or specified address. Returns an object with the number of transactions  and the array of native transactions 
+
+🧾 Gets the transactions from the current user or specified address. Returns an object with the number of transactions and the array of native transactions
 
 **Options**:
+
 - `chain` (optional): The blockchain to get data from. Valid values are listed on the intro page in the Transactions and Balances section. Default value: current chain.
 - `address` (optional): A user address (i.e. 0x1a2b3x...). If specified, the user attached to the query is ignored and the address will be used instead.
 - `from_date` (optional): The date from where to get the transactions (any format that is accepted by momentjs). Provide the param 'from_block' or 'from_date' If 'from_date' and 'from_block' are provided, 'from_block' will be used.
-- `to_date` (optional):  Get the transactions to this date (any format that is accepted by momentjs). Provide the param 'to_block' or 'to_date' If 'to_date' and 'to_block' are provided, 'to_block' will be used.
+- `to_date` (optional): Get the transactions to this date (any format that is accepted by momentjs). Provide the param 'to_block' or 'to_date' If 'to_date' and 'to_block' are provided, 'to_block' will be used.
 - `from_block` (optional): The minimum block number from where to get the transactions Provide the param 'from_block' or 'from_date' If 'from_date' and 'from_block' are provided, 'from_block' will be used.
 - `to_block` (optional): The maximum block number from where to get the transactions. Provide the param 'to_block' or 'to_date' If 'to_date' and 'to_block' are provided, 'to_block' will be used.
 - `offset` (optional): Offset.
@@ -158,7 +169,6 @@ const { fetchERC20Balance, assets } = useERC20Balance({ chain : "eth" });
 **Returns** (Array) : native transactions
 
 ### `useTokenPrice()`
-
 
 ### `useNFTTransfers()`
 
