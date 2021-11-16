@@ -22,6 +22,9 @@ Check the corresponding docs for additional information and help.
 
 If this boilerplate helps you build Ethereum mobile dapps faster - please star this project, every star makes us very happy!
 
+# 🤝 `Need help?`
+If you need help with setting up the boilerplate or have other questions - don't hesitate to write in our community forum and we will check asap. [Forum link](https://forum.moralis.io/t/ethereum-react-native-boilerplate-questions/4511).
+
 # 🚀 Quick Start
 
 📄 Clone or fork `ethereum-react-native-boilerplate`:
