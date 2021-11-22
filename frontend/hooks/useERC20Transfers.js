@@ -4,7 +4,7 @@ import { useMoralisDapp } from "../providers/MoralisDappProvider/MoralisDappProv
 
 const useERC20Transfers = () => {
   const { account } = useMoralisWeb3Api();
-  const { walletAddress } = useMoralisDapp();
+  const { walletAddress, chainId } = useMoralisDapp();
   const { isInitialized } = useMoralis();
   const [ERC20Transfers, setERC20Transfers] = useState();
 
@@ -18,7 +18,7 @@ const useERC20Transfers = () => {
 
   const fetchERC20Transfers = async () => {
     return await account
-      .getTokenTransfers({ address: walletAddress, chain: "eth" })
+      .getTokenTransfers({ address: walletAddress, chain: chainId })
       .then((result) => result.result)
       .catch((e) => alert(e.message));
   };

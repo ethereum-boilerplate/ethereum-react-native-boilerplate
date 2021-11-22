@@ -20,9 +20,11 @@ import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { getExplorer } from "../../helpers/networks";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappProvider";
 
 function TransactionDetails(props) {
   const [tipVisible, setTipVisible] = useState(false);
+  const { chainId } = useMoralisDapp();
 
   const copyToClipboard = () => {
     Clipboard.setString(props?.transactionDetails.address);
@@ -53,7 +55,7 @@ function TransactionDetails(props) {
           numberOfLines={1}
           onPress={() =>
             Linking.openURL(
-              `${getExplorer("0x1")}tx/${
+              `${getExplorer(chainId)}/tx/${
                 props?.transactionDetails.transaction_hash
               }`
             )
