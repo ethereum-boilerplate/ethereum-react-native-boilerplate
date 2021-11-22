@@ -7,7 +7,6 @@ function MoralisDappProvider({ children }) {
   const [walletAddress, setWalletAddress] = useState();
   const [chainId, setChainId] = useState();
   useEffect(() => {
-    console.log(walletAddress, "fdf");
     Moralis.onChainChanged(function (chain) {
       setChainId(chain);
     });

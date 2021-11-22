@@ -31,7 +31,7 @@ const TransferERC20 = ({ amount, token, receiver }) => {
   );
 
   const TransferTheCoins = () => {
-    fetch({ connector });
+    fetch();
   };
 
   return (

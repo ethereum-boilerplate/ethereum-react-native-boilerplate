@@ -1,11 +1,16 @@
-import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
+import { useMoralisDapp } from "../providers/MoralisDappProvider/MoralisDappProvider";
 import { useEffect, useState } from "react";
-import { useMoralisWeb3Api, useMoralisWeb3ApiCall } from "react-moralis";
+import {
+  useMoralisWeb3Api,
+  useMoralisWeb3ApiCall,
+  useMoralis,
+} from "react-moralis";
 import { useIPFS } from "./useIPFS";
 
-export const useNFTBalance = (options) => {
+export const useNFTBalance = (props) => {
   const { account } = useMoralisWeb3Api();
-  const { chainId } = useMoralisDapp();
+  const { chainId, walletAddress } = useMoralisDapp();
+  const { isInitialized } = useMoralis();
   const { resolveLink } = useIPFS();
   const [NFTBalance, setNFTBalance] = useState([]);
   const {
@@ -13,22 +18,34 @@ export const useNFTBalance = (options) => {
     data,
     error,
     isLoading,
-  } = useMoralisWeb3ApiCall(account.getNFTs, { chain: chainId, ...options });
+  } = useMoralisWeb3ApiCall(account.getNFTs, {
+    chain: chainId,
+    address: walletAddress,
+    ...props,
+  });
 
   useEffect(() => {
-    if (data?.result) {
-      const NFTs = data.result;
-      for (let NFT of NFTs) {
-        if (NFT?.metadata) {
-          NFT.metadata = JSON.parse(NFT.metadata);
-          // metadata is a string type
-          NFT.image = resolveLink(NFT.metadata?.image);
+    if (isInitialized) {
+      if (data?.result) {
+        const NFTs = data.result;
+        for (let NFT of NFTs) {
+          if (NFT?.metadata) {
+            //Need to refactor
+            try {
+              NFT.metadata = JSON.parse(NFT.metadata);
+            } catch (error) {
+              NFT.metadata = JSON.parse(JSON.stringify(NFT.metadata));
+            }
+
+            // metadata is a string type
+            NFT.image = resolveLink(NFT.metadata?.image);
+          }
         }
+        setNFTBalance(NFTs);
       }
-      setNFTBalance(NFTs);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isInitialized, chainId, walletAddress, data]);
 
   return { getNFTBalance, NFTBalance, error, isLoading };
 };

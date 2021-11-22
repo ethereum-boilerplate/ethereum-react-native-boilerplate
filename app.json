@@ -1,17 +1,18 @@
 {
   "expo": {
     "ios": {
-      "bundleIdentifier": "com.myreactdapp"
+      "bundleIdentifier": "com.myreactnativedapp"
     },
     "android": {
-      "package": "com.myreactdapp"
+      "package": "com.myreactnativedapp"
     },
-    "scheme": "myreactdapp",
+    "scheme": "myreactnativedapp",
     "icon": "assets/image/app-icon.png",
     "splash": {
       "image": "assets/image/app-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#222222"
-    }
+      "backgroundColor": "#FFFFFF"
+    },
+    "entryPoint": "./index.js"
   }
 }
