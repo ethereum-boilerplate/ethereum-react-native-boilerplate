@@ -6,6 +6,7 @@ import {
   getFocusedRouteNameFromRoute,
 } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { LogBox } from "react-native";
 
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import SplashScreen from "./Components/SplashScreen";
@@ -15,7 +16,7 @@ import Assets from "./Components/Assets/Assets";
 import Transfer from "./Components/Transfer/Transfer";
 import Profile from "./Components/Profile/Profile";
 import Header from "./Components/Header";
-import QuickStart from "./Components/QuickStart";
+import NFTAssets from "./Components/NFT/NFTAssets";
 
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {
@@ -28,6 +29,8 @@ import {
 
 import Moralis from "moralis/types";
 
+LogBox.ignoreAllLogs();
+
 // const Activecolor =
 function Home(): JSX.Element {
   return (
@@ -36,17 +39,6 @@ function Home(): JSX.Element {
       activeColor="#315399"
       // inactiveColor="#3e2465"
       barStyle={{ backgroundColor: "white" }}>
-      {/* <Tab.Screen
-        name="QuickStart"
-        options={{
-          tabBarLabel: "QuickStart",
-          tabBarIcon: ({ color, focused }) => {
-            return <FontAwesomeIcon icon={faRocket} color={color} size={20} />;
-          },
-        }}
-        component={QuickStart}
-      /> */}
-
       <Tab.Screen
         name="Assets"
         options={{
@@ -66,6 +58,16 @@ function Home(): JSX.Element {
           ),
         }}
         component={RecentTransactions}
+      />
+      <Tab.Screen
+        name="NFTAssets"
+        options={{
+          tabBarLabel: "NFTAssets",
+          tabBarIcon: ({ color, focused }) => {
+            return <FontAwesomeIcon icon={faRocket} color={color} size={20} />;
+          },
+        }}
+        component={NFTAssets}
       />
       <Tab.Screen
         name="Transfer"
