@@ -86,6 +86,7 @@ yarn install
     - [`<RecentTransactions />`](#recenttransactions-)
     - [`<TransactionDetails />`](#transactiondetails-)
     - [`<Address />`](#address-)
+    - [`<Blockie />`](#blockie-)
 - [🧰 Ethereum Hooks](#-ethereum-hooks)
     - [`useERC20balance()`](#useerc20balance)
     - [`useERC20Transfers()`](#useerc20transfers)
@@ -113,7 +114,7 @@ yarn install
 📨 `<ERC20Balance />` : Displays all ERC20 Balances with Price.
 **Options**:
 
-- chain: chain to fetch data from.
+- `chain`: chain to fetch data from.
 
 ### `<Assets />`
 
@@ -126,6 +127,17 @@ yarn install
 ### `<TransactionDetails />`
 
 `<TransactionDetails />` : Modal to display all ERC20 Transaction related content
+
+### `<Blockie />`
+
+A custom Blockie indenticon generator for React Native. 
+![IMG_4527](https://user-images.githubusercontent.com/9363303/143417343-8280bd77-552f-4417-b3b2-bce6900c7dc1.jpg)
+![IMG_4526 2](https://user-images.githubusercontent.com/9363303/143417572-7b283258-f737-4a36-81c4-ddd23d9037af.jpg)
+![IMG_4525](https://user-images.githubusercontent.com/9363303/143417345-6c7a328f-48b8-465b-90be-2ced124c14ec.jpg)
+
+**Options**:
+- `address`: Address to generate Blockie Icon from.
+- `size`: Size of the Icon. *For more custom sizes, edit the <Blockie/> component as to your liking*
 
 ### `<Address />`
 
