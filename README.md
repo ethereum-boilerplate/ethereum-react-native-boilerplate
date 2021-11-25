@@ -131,9 +131,10 @@ yarn install
 ### `<Blockie />`
 
 A custom Blockie indenticon generator for React Native. 
-![IMG_4527](https://user-images.githubusercontent.com/9363303/143417343-8280bd77-552f-4417-b3b2-bce6900c7dc1.jpg)
-![IMG_4526 2](https://user-images.githubusercontent.com/9363303/143417572-7b283258-f737-4a36-81c4-ddd23d9037af.jpg)
-![IMG_4525](https://user-images.githubusercontent.com/9363303/143417345-6c7a328f-48b8-465b-90be-2ced124c14ec.jpg)
+
+<img src="https://user-images.githubusercontent.com/9363303/143417343-8280bd77-552f-4417-b3b2-bce6900c7dc1.jpg" width="302" height="69">
+<img src="https://user-images.githubusercontent.com/9363303/143417572-7b283258-f737-4a36-81c4-ddd23d9037af.jpg" width="314.5" height="79">
+<img src="https://user-images.githubusercontent.com/9363303/143417345-6c7a328f-48b8-465b-90be-2ced124c14ec.jpg" width="300" height="75.5">
 
 **Options**:
 - `address`: Address to generate Blockie Icon from.
