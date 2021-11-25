@@ -1,4 +1,4 @@
-import React, { useState, createRef, useRef } from "react";
+import React, { useState, createRef, useRef, useEffect } from "react";
 import {
   StyleSheet,
   TextInput,
@@ -75,6 +75,10 @@ const LoginScreen = ({ navigation }) => {
       })
       .catch(() => {});
   };
+
+  useEffect(() => {
+    isAuthenticated && navigation.replace("DrawerNavigationRoutes");
+  }, [isAuthenticated]);
 
   return (
     <Provider>
