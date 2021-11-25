@@ -11,7 +11,7 @@ import { useMoralisDapp } from "../providers/MoralisDappProvider/MoralisDappProv
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import { Tooltip } from "@ui-kitten/components";
-import BlockieImage from "../Blockie.png";
+import Blockie from "./Blockie";
 
 export default function Address() {
   const { walletAddress, chainId } = useMoralisDapp();
@@ -27,7 +27,7 @@ export default function Address() {
       <TouchableOpacity
         style={styles.viewContainer}
         onPress={() => copyToClipboard()}>
-        <Image source={BlockieImage} style={styles.imageContainer} />
+        <Blockie address={walletAddress} size={100} />
 
         <Text
           style={styles.headerText}
