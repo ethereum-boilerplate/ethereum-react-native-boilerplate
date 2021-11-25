@@ -65,9 +65,11 @@ yarn install
 
 🚴‍♂️ Run your App:
 
-- Web: `yarn web`
-- IOS: `yarn ios`
-- Android: `yarn android`
+- IOS: `yarn ios` for emulator *Make sure you have Xcode or atleast Xcode command line tools installed*
+    -  For physical IOS Device: Open the `moraliscreatereactnativedapp.xcworkspace` from `ios` folder in Xcode. Run the App by choosing your connected physical device.  
+- Android:
+    - Command `yarn start` 
+    - Open `android` folder from source code in Android Studio. Click "Run app" button to open either emulator or physical device. To see if devices are available, run command `adb devices` in your terminal. 
 
 # 🧭 Table of contents
 
