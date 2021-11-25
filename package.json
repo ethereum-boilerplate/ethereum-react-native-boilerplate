@@ -42,6 +42,7 @@
     "react-native-unimodules": "0.14.10",
     "react-native-vector-icons": "^9.0.0",
     "react-native-web": "~0.13.12",
+    "react-native-webview": "^11.14.3",
     "web3": "^1.6.0"
   },
   "devDependencies": {

@@ -112,7 +112,7 @@ const LoginScreen = ({ navigation }) => {
                 />
               </View>
 
-              <View style={styles.marginLarge}>
+              <View>
                 {authError && (
                   <Portal>
                     <Dialog visible={visible} onDismiss={hideDialog}>
