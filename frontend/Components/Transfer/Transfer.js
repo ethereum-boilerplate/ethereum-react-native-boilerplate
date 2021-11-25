@@ -13,39 +13,6 @@ import ERC20Balance from "../Assets/ERC20Balance";
 import { useWalletConnect } from "../../WalletConnect";
 
 const color = "#315399";
-const TransferERC20 = ({ amount, token, receiver }) => {
-  const { Moralis } = useMoralis();
-  const connector = useWalletConnect();
-
-  const tokenDecimals = token ? token.decimals : "18";
-  const tokenAddress = token ? token.token_address : "";
-
-  const { fetch, error, isFetching } = useWeb3Transfer(
-    {
-      amount: Moralis.Units.Token(1, tokenDecimals),
-      receiver: "0xE91e20FbA1B916e1993C8D135a62b15e14707077",
-      type: "erc20",
-      contractAddress: tokenAddress,
-    },
-    { autoFetch: false }
-  );
-
-  const TransferTheCoins = () => {
-    fetch();
-  };
-
-  return (
-    <Button
-      mode="contained"
-      disabled={!(token && receiver && amount)}
-      style={token && receiver && amount ? styles.button : styles.diabledButton}
-      labelStyle={{ color: "white", fontSize: 20 }}
-      onPress={TransferTheCoins}
-      loading={isFetching}>
-      Transfer
-    </Button>
-  );
-};
 
 function Transfer() {
   const [receiver, setReceiver] = useState();
@@ -55,10 +22,28 @@ function Transfer() {
   const [isPending, setIsPending] = useState(false);
   const [validatedAddress, setValidatedAddress] = useState();
 
+  const [transferOptionsState, setTransferOptionsState] = useState();
+
+  const { fetch, error, isFetching } = useWeb3Transfer(transferOptionsState);
+
+  const { Moralis } = useMoralis();
+  const tokenDecimals = token ? token.decimals : "18";
+  const tokenAddress = token ? token.token_address : "";
+
   useEffect(() => {
-    // console.log(token, amount, receiver, "Update check");
-    if (token && amount && receiver) setTx({ amount, receiver, token });
+    if (token && amount && receiver)
+      setTransferOptionsState({
+        amount: Moralis.Units.Token(amount, tokenDecimals), //Moralis.Units.ETH(0.5) -- if you want to send native currency
+        receiver: receiver,
+        type: "erc20", // type: "native" -- if you want to send native currency
+        contractAddress: tokenAddress,
+      });
   }, [token, amount, receiver]);
+
+  const TransferTheCoins = () => {
+    //console.log("TRANSFER CLICKED", transferOptionsState);
+    fetch();
+  };
 
   // console.log(token, "token");
   return (
@@ -116,7 +101,18 @@ function Transfer() {
             <ERC20Balance setToken={setToken} />
           </View>
           <View style={[styles.flex1, styles.justifyCenter]}>
-            <TransferERC20 amount={amount} token={token} receiver={receiver} />
+            <Button
+              mode="contained"
+              disabled={!(token && receiver && amount)}
+              style={
+                token && receiver && amount
+                  ? styles.button
+                  : styles.diabledButton
+              }
+              labelStyle={{ color: "white", fontSize: 20 }}
+              onPress={TransferTheCoins}>
+              Transfer
+            </Button>
           </View>
         </View>
       </ScrollView>

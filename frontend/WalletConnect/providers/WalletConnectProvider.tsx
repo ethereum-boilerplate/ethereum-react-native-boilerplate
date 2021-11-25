@@ -170,10 +170,11 @@ export default function WalletConnectProvider({
       ]);
 
       const isResumable = false;
-      // !!maybeExistingSession &&
-      // // Android does not inherently "know" the provider.
-      // // (This information is obscured by the BottomSheet.)
-      // (Platform.OS === "android" || !!maybeExistingWalletService);
+      (!!maybeExistingSession &&
+        // // Android does not inherently "know" the provider.
+        // // (This information is obscured by the BottomSheet.)
+        Platform.OS === "android") ||
+        !!maybeExistingWalletService;
 
       if (!isResumable) {
         await Promise.all([

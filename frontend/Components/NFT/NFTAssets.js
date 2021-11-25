@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     marginVertical: 10,
     borderRadius: 30,
+    elevation: 5, //for android
     shadowColor: "#171717",
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.2,
