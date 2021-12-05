@@ -60,15 +60,16 @@ export default function WalletConnectProvider({
 
   const open = React.useCallback(
     async (uri: string, cb: unknown): Promise<unknown> => {
-      if (Platform.OS === "android") {
-        const canOpenURL = await Linking.canOpenURL(uri);
-        if (!canOpenURL) {
-          // Redirect the user to download a wallet.
-          Linking.openURL("https://walletconnect.org/wallets");
-          throw new Error("No wallets found.");
-        }
-        await Linking.openURL(uri);
-      }
+      //NOTE: commented this original code from wallet connect module
+      // if (Platform.OS === "android") {
+      //   const canOpenURL = await Linking.canOpenURL(uri);
+      //   if (!canOpenURL) {
+      //     // Redirect the user to download a wallet.
+      //     Linking.openURL("https://walletconnect.org/wallets");
+      //     throw new Error("No wallets found.");
+      //   }
+      //   await Linking.openURL(uri);
+      // }
       setState({
         uri,
         visible: true,
@@ -129,6 +130,17 @@ export default function WalletConnectProvider({
 
   const connectToWalletService = React.useCallback(
     async (walletService: WalletService, uri?: string): Promise<void> => {
+      //NOTE: Implemented deep linking inside connectToWalletService callback
+      if (Platform.OS === "android") {
+        const canOpenURL = await Linking.canOpenURL(uri);
+        if (!canOpenURL) {
+          // Redirect the user to download a wallet.
+          Linking.openURL("https://walletconnect.org/wallets");
+          throw new Error("No wallets found.");
+        }
+        await Linking.openURL(uri);
+      }
+
       if (typeof uri !== "string" || !uri.length) {
         return Promise.reject(new Error("Invalid uri."));
       }
@@ -351,7 +363,7 @@ export default function WalletConnectProvider({
   return (
     <WalletConnectContext.Provider value={value}>
       {!!children && children}
-      {Platform.OS !== "android" && renderQrcodeModal(modalProps)}
+      {renderQrcodeModal(modalProps)}
     </WalletConnectContext.Provider>
   );
 }
