@@ -89,11 +89,13 @@ yarn install
     - [`<Blockie />`](#blockie-)
 - [🧰 Ethereum Hooks](#-ethereum-hooks)
     - [`useERC20balance()`](#useerc20balance)
+    - [`useNativeBalance()`](#usenativebalance)
     - [`useERC20Transfers()`](#useerc20transfers)
     - [`useNativeTransactions()`](#usenativetransactions)
     - [`useTokenPrice()`](#usetokenprice)
     - [`useNFTTransfers()`](#usenfttransfers)
     - [`useNFTBalance()`](#usenftbalance)
+
 
 # 🏗 Ethereum Components
 
@@ -160,6 +162,32 @@ Displays The user address that is copyable
 
 ```jsx
 const { fetchERC20Balance, assets } = useERC20Balance({ chain: "eth" });
+```
+
+### `useNativeBalance()` 
+
+💰 Gets native balance for a current user or specified address.
+
+**Options**:
+- `chain` (optional): The blockchain to get data from. Default value: current chain.
+
+**Example**:
+```jsx
+import useNativeBalance from "./hooks/useNativeBalance";
+
+function NativeBalance() {
+  const { nativeBalance } = useNativeBalance(chain);
+
+return (
+    <View style={styles.itemView}>
+      <Text style={styles.name}> {nativeBalance} </Text>
+    </View>
+  );
+}
+```
+**Example return of nativeBalance** (string)
+```jsx
+'0.1581 BNB'
 ```
 
 ### `useERC20Transfers()`
