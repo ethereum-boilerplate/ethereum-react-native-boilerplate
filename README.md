@@ -3,11 +3,13 @@
 > React Native components and hooks for fast building dApps without running own backend
 
 [![Discord](https://img.shields.io/badge/discord-join%20chat-blue.svg?style=for-the-badge&logo=discord)](https://discord.com/invite/wV7nkDYGyZ)
-![Discourse topics](https://img.shields.io/discourse/topics?label=Forum%20Support&logo=Moralis&server=https%3A%2F%2Fforum.moralis.io&style=for-the-badge)
-![GitHub last commit](https://img.shields.io/github/last-commit/ethereum-boilerplate/ethereum-react-native-boilerplate?color=informational&style=for-the-badge)
+[![Discourse topics](https://img.shields.io/discourse/topics?label=Forum%20Support&logo=Moralis&server=https%3A%2F%2Fforum.moralis.io&style=for-the-badge)](https://forum.moralis.io/t/ethereum-react-native-boilerplate-questions/4511)
+[![GitHub last commit](https://img.shields.io/github/last-commit/ethereum-boilerplate/ethereum-react-native-boilerplate?color=informational&style=for-the-badge)](https://github.com/ethereum-boilerplate/ethereum-react-native-boilerplate/commits/main)
+
+
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/ethereum-boilerplate/ethereum-react-native-boilerplate?style=social)
-![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FMoralisWeb3)
+[![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FMoralisWeb3)](https://twitter.com/MoralisWeb3)
 
 This project is using:
 
