@@ -1,46 +1,49 @@
-import { useEffect, useState } from "react";
-import { useMoralis, useMoralisWeb3Api } from "react-moralis";
-import { useMoralisDapp } from "../providers/MoralisDappProvider/MoralisDappProvider";
-import { getNativeByChain } from "../utils/getNativeByChain";
-import { n4 } from "../utils/formatters";
+import {useMoralisDapp} from '../providers/MoralisDappProvider/MoralisDappProvider';
+import {useEffect, useState} from 'react';
+import {
+  useMoralisWeb3Api,
+  useMoralisWeb3ApiCall,
+  useMoralis,
+} from 'react-moralis';
+import {useIPFS} from './useIPFS';
 
-const useNativeBalance = (chain) => {
-  const { isInitialized, Moralis } = useMoralis();
-  const { account } = useMoralisWeb3Api();
-  const { walletAddress, chainId } = useMoralisDapp();
-  const [nativeBalance, setNativeBalance] = useState();
-  const [assets, setAssets] = useState();
+export const useNFTBalance = props => {
+  const {account} = useMoralisWeb3Api();
+  const {chainId, walletAddress} = useMoralisDapp();
+  const {isInitialized} = useMoralis();
+  const {resolveLink} = useIPFS();
+  const [NFTBalance, setNFTBalance] = useState([]);
+  const {fetch: getNFTBalance, data, error, isLoading} = useMoralisWeb3ApiCall(
+    account.getNFTs,
+    {
+      chain: chainId,
+      address: walletAddress,
+      ...props,
+    },
+  );
 
   useEffect(() => {
     if (isInitialized) {
-      //pick from passed down chain into component or default app level chain
-      const chainFinal = chain || chainId;
-      const native = getNativeByChain(chainFinal);
+      if (data?.result) {
+        const NFTs = data.result;
+        for (let NFT of NFTs) {
+          if (NFT?.metadata) {
+            //Need to refactor
+            try {
+              NFT.metadata = JSON.parse(NFT.metadata);
+            } catch (error) {
+              NFT.metadata = JSON.parse(JSON.stringify(NFT.metadata));
+            }
 
-      fetchNativeBalance()
-        .then((result) => {
-          console.log("BALANCE", result);
-          const balanceInWei = Moralis.Units.FromWei(result.balance);
-          const balanceFormatted = `${n4.format(balanceInWei)} ${native}`;
-          setNativeBalance(balanceFormatted);
-        })
-        .catch((e) => alert(e.message));
+            // metadata is a string type
+            NFT.image = resolveLink(NFT.metadata?.image);
+          }
+        }
+        setNFTBalance(NFTs);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isInitialized, chainId, walletAddress]);
+  }, [isInitialized, chainId, walletAddress, data]);
 
-  const fetchNativeBalance = async () => {
-    //pick from passed down chain into component or default app level chain
-    const chainFinal = chain || chainId;
-    const options = { address: walletAddress, chain: chainFinal };
-
-    return await account
-      .getNativeBalance(options)
-      .then((result) => result)
-      .catch((e) => alert(e.message));
-  };
-
-  return { fetchNativeBalance, nativeBalance };
+  return {getNFTBalance, NFTBalance, error, isLoading};
 };
-
-export default useNativeBalance;

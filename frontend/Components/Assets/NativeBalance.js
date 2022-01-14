@@ -3,7 +3,7 @@ import {useMoralis, useMoralisWeb3Api} from 'react-moralis';
 import {View, Text, StyleSheet} from 'react-native';
 import {useMoralisDapp} from '../../providers/MoralisDappProvider/MoralisDappProvider';
 import {n4} from '../../utils/formatters';
-import useNativeBalance from '../../hooks/useNFTBalance';
+import useNativeBalance from '../../hooks/useNativeBalance';
 
 import {getNativeByChain} from '../../utils/getNativeByChain';
 
