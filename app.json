@@ -1,18 +1,4 @@
 {
-  "expo": {
-    "ios": {
-      "bundleIdentifier": "com.myreactnativedapp"
-    },
-    "android": {
-      "package": "com.myreactnativedapp"
-    },
-    "scheme": "myreactnativedapp",
-    "icon": "assets/image/app-icon.png",
-    "splash": {
-      "image": "assets/image/app-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#FFFFFF"
-    },
-    "entryPoint": "./index.js"
-  }
+  "name": "EthereumRNBoilerplate",
+  "displayName": "EthereumRNBoilerplate"
 }
