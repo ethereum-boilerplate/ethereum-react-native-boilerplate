@@ -32,7 +32,7 @@ Moralis.setAsyncStorage(AsyncStorage);
 // Replace the enable function to use the react-native WalletConnect
 // @ts-ignore
 Moralis.enable = enableViaWalletConnect;
-console.log(AsyncStorage.getAllKeys(), 'KEYS');
+// console.log(AsyncStorage.getAllKeys(), 'KEYS');
 
 const walletConnectOptions: WalletConnectProviderProps = {
   storageOptions: {

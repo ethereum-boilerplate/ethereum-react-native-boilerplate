@@ -3,6 +3,8 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '11.0'
 
+pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
 target 'EthereumRNBoilerplate' do
   config = use_native_modules!
 

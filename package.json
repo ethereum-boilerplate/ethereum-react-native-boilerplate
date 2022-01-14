@@ -75,6 +75,7 @@
     "react-native-unimodules": "0.14.10",
     "react-native-vector-icons": "^9.0.0",
     "react-native-web": "~0.17.5",
+    "react-native-webview": "^11.16.0",
     "readable-stream": "^1.0.33",
     "rn-nodeify": "^10.3.0",
     "stream-browserify": "^1.0.0",

@@ -69,7 +69,6 @@ const NFTAssets = () => {
       />
     );
   };
-  console.log('NFT BALANCE', NFTBalance);
   return (
     <View style={{flex: 1}}>
       <Text style={styles.headerText} category="h4">
