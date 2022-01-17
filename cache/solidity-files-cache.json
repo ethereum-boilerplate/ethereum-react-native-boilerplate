@@ -1,8 +1,8 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/Users/mohammedabdulmalik/Downloads/All-regarding-dev/Ethereum-dev/Moralis/moralis-tutorials/react-native-moralis/contracts/Hello.sol": {
-      "lastModificationDate": 1634887778397,
+    "/Users/genesisdellosa/Desktop/moralis/rn-boilderpate/ethereum-react-native-boilerplate/contracts/Hello.sol": {
+      "lastModificationDate": 1638370117828,
       "contentHash": "94d0c19a30924ec427b7d02c8fe45373",
       "sourceName": "contracts/Hello.sol",
       "solcConfig": {
@@ -37,78 +37,8 @@
         "Hello"
       ]
     },
-    "/Users/mohammedabdulmalik/Downloads/All-regarding-dev/Ethereum-dev/Moralis/moralis-tutorials/react-native-moralis/node_modules/hardhat/console.sol": {
-      "lastModificationDate": 1634928277925,
-      "contentHash": "c20b2460755f312099ccd61427237ded",
-      "sourceName": "hardhat/console.sol",
-      "solcConfig": {
-        "version": "0.7.3",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        ">=0.4.22 <0.8.0"
-      ],
-      "artifacts": [
-        "console"
-      ]
-    },
-    "/Users/mohammedabdulmalik/Downloads/All-regarding-dev/Ethereum-dev/Moralis/moralis-tutorials/ethereum-react-native-boilerplate/contracts/Hello.sol": {
-      "lastModificationDate": 1635664141362,
-      "contentHash": "94d0c19a30924ec427b7d02c8fe45373",
-      "sourceName": "contracts/Hello.sol",
-      "solcConfig": {
-        "version": "0.7.3",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "hardhat/console.sol"
-      ],
-      "versionPragmas": [
-        ">=0.4.22 <0.9.0"
-      ],
-      "artifacts": [
-        "Hello"
-      ]
-    },
-    "/Users/mohammedabdulmalik/Downloads/All-regarding-dev/Ethereum-dev/Moralis/moralis-tutorials/ethereum-react-native-boilerplate/node_modules/hardhat/console.sol": {
-      "lastModificationDate": 1635664734893,
+    "/Users/genesisdellosa/Desktop/moralis/rn-boilderpate/ethereum-react-native-boilerplate/node_modules/hardhat/console.sol": {
+      "lastModificationDate": 1638370404688,
       "contentHash": "c20b2460755f312099ccd61427237ded",
       "sourceName": "hardhat/console.sol",
       "solcConfig": {

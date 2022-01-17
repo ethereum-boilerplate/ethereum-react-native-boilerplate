@@ -1,4 +1,4 @@
-import React, { useState, createRef } from "react";
+import React, {useState, createRef} from 'react';
 import {
   Text,
   View,
@@ -6,15 +6,15 @@ import {
   Clipboard,
   TouchableOpacity,
   Image,
-} from "react-native";
-import { useMoralisDapp } from "../providers/MoralisDappProvider/MoralisDappProvider";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faCopy } from "@fortawesome/free-solid-svg-icons";
-import { Tooltip } from "@ui-kitten/components";
-import Blockie from "./Blockie";
+} from 'react-native';
+import {useMoralisDapp} from '../providers/MoralisDappProvider/MoralisDappProvider';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faCopy} from '@fortawesome/free-solid-svg-icons';
+import {Tooltip} from '@ui-kitten/components';
+import Blockie from './Blockie';
 
 export default function Address() {
-  const { walletAddress, chainId } = useMoralisDapp();
+  const {walletAddress, chainId} = useMoralisDapp();
   const [tipVisible, setTipVisible] = useState(false);
 
   const copyToClipboard = () => {
@@ -31,7 +31,7 @@ export default function Address() {
 
         <Text
           style={styles.headerText}
-          ellipsizeMode={"middle"}
+          ellipsizeMode={'middle'}
           numberOfLines={1}>
           {walletAddress}
         </Text>
@@ -53,9 +53,9 @@ export default function Address() {
 const styles = StyleSheet.create({
   viewContainer: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   imageContainer: {
     height: 20,
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     width: 130,
     paddingHorizontal: 10,
     fontSize: 18,
-    color: "#414a4c",
-    fontWeight: "600",
+    color: '#414a4c',
+    fontWeight: '600',
   },
 });

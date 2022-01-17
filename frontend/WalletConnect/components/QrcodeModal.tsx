@@ -85,9 +85,8 @@ export default function QrcodeModal({
   division,
 }: RenderQrcodeModalProps & { readonly division: number }): JSX.Element {
   const shouldConnectToWalletService = React.useCallback(
-    (walletService: WalletService) => {
-      connectToWalletService(walletService, uri)
-    },
+    (walletService: WalletService) =>
+      connectToWalletService(walletService, uri),
     [connectToWalletService, uri]
   );
   const { width, height } = useWindowDimensions();

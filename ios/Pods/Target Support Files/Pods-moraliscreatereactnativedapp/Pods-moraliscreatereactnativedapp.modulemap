@@ -1,6 +1,0 @@
-module Pods_moraliscreatereactnativedapp {
-  umbrella header "Pods-moraliscreatereactnativedapp-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,7 +1,7 @@
-import React from "react";
-import { View, StyleSheet } from "react-native";
+import React from 'react';
+import {View, StyleSheet} from 'react-native';
 
-import Address from "./Address";
+import Address from './Address';
 
 export default function Header() {
   return (
@@ -13,8 +13,8 @@ export default function Header() {
 const styles = StyleSheet.create({
   viewContainer: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

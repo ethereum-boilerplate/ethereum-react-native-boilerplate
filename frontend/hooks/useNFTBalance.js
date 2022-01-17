@@ -1,28 +1,26 @@
-import { useMoralisDapp } from "../providers/MoralisDappProvider/MoralisDappProvider";
-import { useEffect, useState } from "react";
+import {useMoralisDapp} from '../providers/MoralisDappProvider/MoralisDappProvider';
+import {useEffect, useState} from 'react';
 import {
   useMoralisWeb3Api,
   useMoralisWeb3ApiCall,
   useMoralis,
-} from "react-moralis";
-import { useIPFS } from "./useIPFS";
+} from 'react-moralis';
+import {useIPFS} from './useIPFS';
 
-export const useNFTBalance = (props) => {
-  const { account } = useMoralisWeb3Api();
-  const { chainId, walletAddress } = useMoralisDapp();
-  const { isInitialized } = useMoralis();
-  const { resolveLink } = useIPFS();
+export const useNFTBalance = props => {
+  const {account} = useMoralisWeb3Api();
+  const {chainId, walletAddress} = useMoralisDapp();
+  const {isInitialized} = useMoralis();
+  const {resolveLink} = useIPFS();
   const [NFTBalance, setNFTBalance] = useState([]);
-  const {
-    fetch: getNFTBalance,
-    data,
-    error,
-    isLoading,
-  } = useMoralisWeb3ApiCall(account.getNFTs, {
-    chain: chainId,
-    address: walletAddress,
-    ...props,
-  });
+  const {fetch: getNFTBalance, data, error, isLoading} = useMoralisWeb3ApiCall(
+    account.getNFTs,
+    {
+      chain: chainId,
+      address: walletAddress,
+      ...props,
+    },
+  );
 
   useEffect(() => {
     if (isInitialized) {
@@ -47,5 +45,5 @@ export const useNFTBalance = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInitialized, chainId, walletAddress, data]);
 
-  return { getNFTBalance, NFTBalance, error, isLoading };
+  return {getNFTBalance, NFTBalance, error, isLoading};
 };
