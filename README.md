@@ -62,9 +62,13 @@ IMPORTANT:
   - Install your preferred wallet on your device: (Metamask, Trust Wallet etc..)
 
 - IOS:
-  - Command `react-native run-ios` or `npx react-native run-ios` for M1 users
+  - Command 
+    `react-native run-ios` for react-native-cli users or 
+    `npx react-native run-ios` if you're using the latest recommended version of node.js
 - Android:
-  - Command `react-native run-android` or `npx react-native run-android` for M1 users
+  - Command 
+    `react-native run-android` for react-native-cli package users or 
+    `npx react-native run-android` if you're using the latest recommended version of node.js
 
 What's New:
 
