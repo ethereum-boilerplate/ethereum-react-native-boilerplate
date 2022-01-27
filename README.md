@@ -63,7 +63,7 @@ IMPORTANT:
 
 - IOS:
   - Command 
-    `react-native run-ios` for react-native-cli users or 
+    `react-native run-ios` for react-native-cli package users or 
     `npx react-native run-ios` if you're using the latest recommended version of node.js
 - Android:
   - Command 
