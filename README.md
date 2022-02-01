@@ -58,12 +58,13 @@ IMPORTANT:
 - To run the app and be able to actually login do the following:
 
   - Make sure to have Xcode installed on your machine if you wish to run it in iOS development and Android Studio if you want it in Android.
+  - For M1 users: Access apps folder then right click on Xcode and click on more info. Then select "Open Using Rosetta".
   - Connect a physical phone device. Open termilan/cmd and run `adb devices` and see if your android device id is listed.
   - Install your preferred wallet on your device: (Metamask, Trust Wallet etc..)
 
 - IOS:
   - Command 
-    `react-native run-ios` for react-native-cli users or 
+    `react-native run-ios` for react-native-cli package users or 
     `npx react-native run-ios` if you're using the latest recommended version of node.js
 - Android:
   - Command 
