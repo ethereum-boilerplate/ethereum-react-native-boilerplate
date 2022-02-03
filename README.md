@@ -21,13 +21,7 @@ Please check the [official documentation of Moralis](https://docs.moralis.io/#us
 
 Check the corresponding docs for additional information and help.
 
-|                                                        App Home                                                        |                                              WalletConnect Authentication                                              |
-| :--------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------: |
-| ![Github Demo 1](https://user-images.githubusercontent.com/9363303/141595048-c3127959-92e8-4c8b-b184-fc36091b384c.gif) | ![Github Demo 2](https://user-images.githubusercontent.com/9363303/141595778-ca546ade-ae9d-4ef7-ace5-fca2638be089.gif) |
-
-|                                                         Transactions                                                          |                                                    NFT Screen                                                     |
-| :---------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: |
-| ![NFT screenrecording ](https://user-images.githubusercontent.com/9363303/143194753-7fefc03e-4bb2-49a9-b1c2-b7b11e55ca5e.GIF) | ![IMG_4512](https://user-images.githubusercontent.com/9363303/143195894-b8cf9bbc-7518-4ea6-852b-7ed5e97a51cb.GIF) |
+![Iphone demo 2 (2)](https://user-images.githubusercontent.com/9363303/152293950-b0ddd2e9-2c6e-43d2-81ef-60dad43f21a5.gif)
 
 # ⭐️ `Star us`
 
