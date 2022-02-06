@@ -9,7 +9,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { LogBox } from "react-native";
 
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import SplashScreen from "./Components/SplashScreen";
 import CryptoAuth from "./Components/CryptoAuth";
 import RecentTransactions from "./Components/RecentTransactions/RecentTransactions";
 import Assets from "./Components/Assets/Assets";
@@ -127,14 +126,7 @@ function App(): JSX.Element {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="SplashScreen">
-        {/* SplashScreen which will come once for 5 Seconds */}
-        <Stack.Screen
-          name="SplashScreen"
-          component={SplashScreen}
-          // Hiding header for Splash Screen
-          options={{ headerShown: false }}
-        />
+      <Stack.Navigator initialRouteName="Auth">
         {/* Auth Navigator: Include Login and Signup */}
         <Stack.Screen
           name="Auth"
