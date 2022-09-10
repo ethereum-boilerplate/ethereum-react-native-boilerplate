@@ -11,7 +11,7 @@ function MoralisDappProvider({children}) {
       setChainId(chain);
     });
 
-    Moralis.onAccountChanged(function (address) {
+    Moralis.onAccountsChanged(function (address) {
       setWalletAddress(address[0]);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
